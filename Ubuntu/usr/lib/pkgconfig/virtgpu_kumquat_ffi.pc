@@ -1,0 +1,9 @@
+prefix=/usr/local
+includedir=/usr/include
+libdir=/usr/lib
+
+Name: virtgpu_kumquat_ffi
+Description: C FFI bindings to Rutabaga VGI
+Version: 0.1.3
+Libs: -L${libdir} -lvirtgpu_kumquat_ffi
+Cflags: -I${includedir}

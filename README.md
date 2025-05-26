@@ -73,12 +73,7 @@ sudo chmod 777 /tmp/
 sudo apk add rust
 sudo apk add cargo
 cd JunkyardVGPU
-sudo cp -r dev/__properties__/ /dev/
-sudo cp -r usr/include/* /usr/include/
-sudo cp -r usr/lib/* /usr/lib/
-sudo cp -r usr/bin/* /usr/bin/
-sudo cp -r system/lib64/* /system/lib64/
-sudo cp -r system/bin/* /system/bin/
+sudo cp -r postmarketOS/* /
 sudo apk add vulkan-tools
 sudo apk add vulkan-loader
 sudo apk add meson

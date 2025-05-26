@@ -1,0 +1,10 @@
+prefix="/data/data/com.termux/files/home/aemu/install"
+libdir="${prefix}/lib"
+includedir="${prefix}/include/aemu/host-common"
+
+Name: AEMUCommon logging base
+Description: Android emulation utilities library
+Version: 0.1.2
+
+Libs: -L${libdir} -laemu-logging
+Cflags: -I${includedir}
