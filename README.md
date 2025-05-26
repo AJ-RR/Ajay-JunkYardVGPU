@@ -89,7 +89,7 @@ sudo apk add libdrm-dev
 sudo apk add byacc
 sudo apk add flex
 sudo apk add wayland-dev
-sudo app add libxcb-dev
+sudo apk add libxcb-dev
 sudo apk add libx11-dev
 sudo apk add libxshmfence-dev
 sudo apk add libxrandr-dev
