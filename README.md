@@ -42,6 +42,29 @@ While our current Pixel Build runs Alpine Linux currently the executables for Ru
 ## Building the Executables on Android
 All four executables to be built from scratch must be built on Android. The builds which are made on Android will work on PMOS if the lib and include files are copied properly (See Necessary Linux Dependencies). The necessary lib and include files have been copied to this repo so the executables may be run on the PMOS build. To build Rutabaga and kumquat media server please refer to this [website](https://crosvm.dev/book/appendix/rutabaga_gfx.html) for each step except for the gfxstream guest section. For this section add the flags `--libdir /data/data/com.termux/files/usr/lib --includedir /data/data/com.termux/files/usr/include` to the command `meson setup guest-build/ -Dvulkan-drivers="gfxstream" -Dgallium-drivers="" -Dopengl=false`. Once all necessary files are copied onto PMOS, the kumquat executable will run; the client build may need to be rebuilt on the PMOS build (shown in below section)
 
+# Flashing PMOS to the Pixel Fold:
+1. Please visit this [google drive](https://drive.google.com/drive/u/1/folders/1fJFoLv03OnqD1DCgAlVn815QidLx3vFL) and download `updated_mali_boot.img`, `vendor_boot_cgroup_memory.img`, and `starling_rootfs_v1_18_with_firmware.img`
+2. Reboot the phone by holding down the power and volume up button, then once the phone starts to reboot hold the volume down button and power button to boot into fastboot mode
+3. You will have to install adb/fastboot on your pc, please follow steps (here)[https://www.xda-developers.com/install-adb-windows-macos-linux/https://www.xda-developers.com/install-adb-windows-macos-linux/] 
+4. Connect your pc to the Pixel Fold via USB C and run the following commands in your terminal: 
+``` 
+    fastboot oem uart enable
+    fastboot oem disable-verification
+    fastboot oem disable-verity
+    fastboot erase init_boot
+
+    fastboot erase boot
+    fastboot flash boot "<path to updated_mali_boot.img>"
+    fastboot flash boot "<path to updated_mali_boot.img>"
+    fastboot oem disable-verification
+    fastboot oem disable-verity
+    fastboot erase super
+    fastboot flash super "<path to starling_rootfs_v1_18_with_firmware.img>"
+    fastboot erase vendor_boot
+    fastboot flash vendor_boot "<path to vendor_boot_cgroup_memory.img>"
+
+    fastboot reboot
+```
 
 # PMOS Pixel Fold build: Setting up your environment and running the VGPU in an Ubuntu Container
 
