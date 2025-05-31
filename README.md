@@ -45,7 +45,7 @@ All four executables to be built from scratch must be built on Android. The buil
 # Flashing PMOS to the Pixel Fold:
 1. Please visit this [google drive](https://drive.google.com/drive/u/1/folders/1fJFoLv03OnqD1DCgAlVn815QidLx3vFL) and download `updated_mali_boot.img`, `vendor_boot_cgroup_memory.img`, and `starling_rootfs_v1_18_with_firmware.img`
 2. Reboot the phone by holding down the power and volume up button, then once the phone starts to reboot hold the volume down button and power button to boot into fastboot mode
-3. You will have to install adb/fastboot on your pc, please follow steps (here)[https://www.xda-developers.com/install-adb-windows-macos-linux/https://www.xda-developers.com/install-adb-windows-macos-linux/] 
+3. You will have to install adb/fastboot on your pc, please follow steps [here](https://www.xda-developers.com/install-adb-windows-macos-linux/https://www.xda-developers.com/install-adb-windows-macos-linux/)
 4. Connect your pc to the Pixel Fold via USB C and run the following commands in your terminal: 
 ``` 
     fastboot oem uart enable
