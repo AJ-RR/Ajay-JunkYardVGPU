@@ -27,7 +27,7 @@ Our MVP is to display the interaction between host and guest applications.
 
 # Android
 
-Following section goes over how to build the applications in this repo on Android; the generated executables and object files are already available in this repo. If you are just interested in using this tool on pmOS, skip to the pmOS section below.
+This section goes over how to build the applications in this repo on Android; the generated executables and object files are already available in this repo. If you are just interested in using this tool on pmOS, skip to the pmOS section.
 
 While our Google Pixel Fold runs pmOS, the executables for Rutabaga, libaemu, and GFXstream must be built on Android for linking properly against Bionic. The workaround is to compile on Android, pull the executables to pmOS, and copy the necessary shared object files into corresponding directories. 
 
@@ -82,9 +82,8 @@ pmOS is a distribution of Alpine Linux. It uses musl libc.
 
 ## Setting up Environment on pmOS
 
-1. If this is the first time booting the phone you will need to flash the phone. You can find instructions for this on [Google drive](https://drive.google.com/drive/u/1/folders/1fJFoLv03OnqD1DCgAlVn815QidLx3vFL).
-2. To connect to the phone you can either communicate via serial or by plugging the phone into the router. For MacOS users the router is the only option. Windows users may change their Internet Sharing IP to 172.16.42.1 to enable internet sharing with pmOS.
-3. After ssh'ing into the phone, you will need to partition a large enough drive to hold the repo (~300 MB). To create a new partition: 
+1. To connect to the phone you can either communicate via serial or by plugging the phone into the router. For MacOS users the router is the only option. Windows users may change their Internet Sharing IP to 172.16.42.1 to enable internet sharing with pmOS.
+2. After ssh'ing into the phone, you will need to partition a large enough drive to hold the repo (~300 MB). To create a new partition: 
     1. `sudo mkdir /<name of dir where you want to make your mount>`
     2. `sudo mkfs.ext4 /dev/sdaX` where X can be any integer between 1 and 31 as long as nothing is mounted on that sda (you can check this by running `mount`)
     3. `sudo mount -t auto /dev/sdaX /<same dir you just made>`
@@ -93,9 +92,9 @@ pmOS is a distribution of Alpine Linux. It uses musl libc.
     6. Now cd into your new directory in the home directory and run `sudo mkdir containerd`, then `sudo vi /etc/containerd/config.toml`.
     7. Change the root variable to point to `/home/user/<name>/containerd` then :wq the file to save and close it.
     8. Then run `sudo rc-service containerd restart`.
-4. Now you need to remove iptables and add back iptables using `sudo apk del iptables` followed by `sudo apk add iptables` and then `sudo apk add git`.
-5. Now you can configure a ssh key and link it to your GitHub account.
-6. Now clone our repo and install the necessary dependencies.
+3. Now you need to remove iptables and add back iptables using `sudo apk del iptables` followed by `sudo apk add iptables` and then `sudo apk add git`.
+4. Now you can configure a ssh key and link it to your GitHub account.
+5. Now clone our repo and install the necessary dependencies.
 
 
 ## Necessary Linux Dependencies and Commands
