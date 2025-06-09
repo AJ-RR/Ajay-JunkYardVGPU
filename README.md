@@ -25,7 +25,7 @@ Rutabaga is the full abstraction layer that handles dispatching of GPU API calls
 Our MVP is to display the interaction between host and guest applications.
 
 
-## Android
+# Android
 
 Following section goes over how to build the applications in this repo on Android; the generated executables and object files are already available in this repo. If you are just interested in using this tool on pmOS, please skip to the pmOS section below.
 
