@@ -20,7 +20,7 @@ Rutabaga is the full abstraction layer that handles dispatching of GPU API calls
 ![Rutabaga Diagram](docs/rutabaga_document.png)
 
 
-## Minimum Viable Product
+## Minimum Viable Product (MVP)
 
 Our MVP is to display the interaction between host and guest applications.
 
@@ -54,7 +54,7 @@ While our Google Pixel Fold runs pmOS, which is a distribution of Alpine Linux, 
 All four executables to be built from scratch must be built on Android. The builds that are built on Android will work on pmOS if the lib and include files are copied properly (See Necessary Linux Dependencies). The necessary lib and include files have been copied to this repo so the executables may be run on pmOS. To build Rutabaga and Kumquat Media Server please refer to [website](https://crosvm.dev/book/appendix/rutabaga_gfx.html) for each step except for the GFXstream guest section. For this section add the flags `--libdir /data/data/com.termux/files/usr/lib --includedir /data/data/com.termux/files/usr/include` to the command `meson setup guest-build/ -Dvulkan-drivers="gfxstream" -Dgallium-drivers="" -Dopengl=false`. Once all necessary files are copied onto pmOS, the Kumquat executable will run; the client build may need to be rebuilt on pmOS (shown in below section).
 
 
-# pmOS
+# postmarketOS (pmOS)
 
 
 ## Flashing pmOS to Google Pixel Fold
@@ -170,13 +170,25 @@ export CXX=/usr/bin/g++
 
 # Open Items
 
-Support for Color Buffer: 8-bit RGBA color format is not supported for creating color buffer to display; hence, we had to comment out part of source code for GFXstream host that attempts to run OpenGL test program that uses 8-bit RGBA color format for creating color buffer to display.
 
-executorch: Models can be run locally using Bionic version of `vulkan_executor_runner` executable for executorch delegate provided by PyTorch. We attempted to run models remotely from Ubuntu Container using glibc version of `vulkan_executor_runner` executable for executorch; this resulted in segfault as the delegate combines C++ with Vulkan, and only Vulkan portion is forwarded to Kumquat server on pmOS followed by attempting to access virtual address that is valid only within Ubuntu Container.
+## Support for Color Buffer
 
-µVkCompute: We attempted to run benchmark executables of µVkCompute built for glibc remotely from Ubuntu Container; this caused host-guest inteface to break due to invalid file descriptor for BLOB as benchmark executables, unlike `vulkaninfo` exectable from Linux package manager, use unrecognized resource_id/context_id for creating BLOB.
+8-bit RGBA color format is not supported for creating color buffer to display; hence, we had to comment out part of source code for GFXstream host that attempts to run OpenGL test program that uses 8-bit RGBA color format for creating color buffer to display.
 
-clvk: We installed glibc version of clvk within Ubuntu Container for forcing OpenCL commands to be executed only via GPU (not CPU). Then, we attemtped to run `clinfo` executable remotely from Ubuntu Container; Vulkan command were forwared to Kumquat server on pmOS, but the program aborted early without printing output.
+
+## executorch
+
+Models can be run locally using Bionic version of `vulkan_executor_runner` executable for executorch delegate provided by PyTorch. We attempted to run models remotely from Ubuntu Container using glibc version of `vulkan_executor_runner` executable for executorch; this resulted in segfault as the delegate combines C++ with Vulkan, and only Vulkan portion is forwarded to Kumquat server on pmOS followed by attempting to access virtual address that is valid only within Ubuntu Container.
+
+
+## µVkCompute
+
+We attempted to run benchmark executables of µVkCompute built for glibc remotely from Ubuntu Container; this caused host-guest inteface to break due to invalid file descriptor for BLOB as benchmark executables, unlike `vulkaninfo` exectable from Linux package manager, use unrecognized resource_id/context_id for creating BLOB.
+
+
+## clvk
+
+We installed glibc version of clvk within Ubuntu Container for forcing OpenCL commands to be executed only via GPU (not CPU). Then, we attemtped to run `clinfo` executable remotely from Ubuntu Container; Vulkan command were forwared to Kumquat server on pmOS, but the program aborted early without printing output.
 
 
 # Resources, Repositories, and External Tools Used in this Repo
