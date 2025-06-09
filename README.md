@@ -29,7 +29,7 @@ Our MVP is to display the interaction between host and guest applications.
 
 Following section goes over how to build the applications in this repo on Android; the generated executables and object files are already available in this repo. If you are just interested in using this tool on pmOS, please skip to the pmOS section below.
 
-While our Google Pixel Fold runs pmOS, which is a distribution of Alpine Linux, the executables for Rutabaga, libaemu, and GFXstream need to be built on Android OS to link properly against Bionic. The workaround is to compile on Android OS, pull the executables to pmOS, and copy the necessary shared object files into corresponding directories. 
+While our Google Pixel Fold runs pmOS, which is a distribution of Alpine Linux, the executables for Rutabaga, libaemu, and GFXstream need to be built on Android to link properly against Bionic. The workaround is to compile on Android, pull the executables to pmOS, and copy the necessary shared object files into corresponding directories. 
 
 
 ## Setting up Termux on Android
