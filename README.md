@@ -27,7 +27,7 @@ Our MVP is to display the interaction between host and guest applications.
 
 # Android
 
-Following section goes over how to build the applications in this repo on Android; the generated executables and object files are already available in this repo. If you are just interested in using this tool on pmOS, please skip to the pmOS section below.
+Following section goes over how to build the applications in this repo on Android; the generated executables and object files are already available in this repo. If you are just interested in using this tool on pmOS, skip to the pmOS section below.
 
 While our Google Pixel Fold runs pmOS, the executables for Rutabaga, libaemu, and GFXstream must be built on Android for linking properly against Bionic. The workaround is to compile on Android, pull the executables to pmOS, and copy the necessary shared object files into corresponding directories. 
 
@@ -51,7 +51,7 @@ While our Google Pixel Fold runs pmOS, the executables for Rutabaga, libaemu, an
 
 ## Building the Executables on Android
 
-All four executables to be built from scratch must be built on Android. The builds that are built on Android will work on pmOS if the lib and include files are copied properly (See Necessary Linux Dependencies). The necessary lib and include files have been copied to this repo so the executables may be run on pmOS. To build Rutabaga and Kumquat Media Server please refer to [website](https://crosvm.dev/book/appendix/rutabaga_gfx.html) for each step except for the GFXstream guest section. For this section add the flags `--libdir /data/data/com.termux/files/usr/lib --includedir /data/data/com.termux/files/usr/include` to the command `meson setup guest-build/ -Dvulkan-drivers="gfxstream" -Dgallium-drivers="" -Dopengl=false`. Once all necessary files are copied onto pmOS, the Kumquat executable will run; the client build may need to be rebuilt on pmOS (shown in below section).
+All four executables to be built from scratch must be built on Android. The builds that are built on Android will work on pmOS if the lib and include files are copied properly (See Necessary Linux Dependencies). The necessary lib and include files have been copied to this repo so the executables may be run on pmOS. To build Rutabaga and Kumquat Media Server refer to [website](https://crosvm.dev/book/appendix/rutabaga_gfx.html) for each step except for the GFXstream guest section. For this section add the flags `--libdir /data/data/com.termux/files/usr/lib --includedir /data/data/com.termux/files/usr/include` to the command `meson setup guest-build/ -Dvulkan-drivers="gfxstream" -Dgallium-drivers="" -Dopengl=false`. Once all necessary files are copied onto pmOS, the Kumquat executable will run; the client build may need to be rebuilt on pmOS (shown in below section).
 
 
 # postmarketOS (pmOS)
@@ -61,9 +61,9 @@ pmOS is a distribution of Alpine Linux. It uses musl libc.
 
 ## Flashing pmOS to Google Pixel Fold
 
-1. Please visit [google drive](https://drive.google.com/drive/u/1/folders/1fJFoLv03OnqD1DCgAlVn815QidLx3vFL) and download `updated_mali_boot.img`, `vendor_boot_cgroup_memory.img`, and `starling_rootfs_v1_18_with_firmware.img`
+1. Navigate to [google drive](https://drive.google.com/drive/u/1/folders/1fJFoLv03OnqD1DCgAlVn815QidLx3vFL) and download `updated_mali_boot.img`, `vendor_boot_cgroup_memory.img`, and `starling_rootfs_v1_18_with_firmware.img`
 2. Reboot the phone by holding the power and volume down button; once the phone starts to reboot, keep holding the volume down button to boot into fastboot mode
-3. You will have to install adb/fastboot on your PC, please follow steps on [here](https://www.xda-developers.com/install-adb-windows-macos-linux/https://www.xda-developers.com/install-adb-windows-macos-linux/)
+3. You will have to install adb/fastboot on your PC, follow steps on [here](https://www.xda-developers.com/install-adb-windows-macos-linux/https://www.xda-developers.com/install-adb-windows-macos-linux/)
 4. Connect your PC to Google Pixel Fold via USB-C and run the following commands in your terminal:
 ``` 
     fastboot oem uart enable
@@ -148,7 +148,7 @@ export CXX=/usr/bin/g++
     I0519 00:14:09.962327   27089 VkDecoderGlobalState.cpp:2286] Destroyed VkDevice:0xb400007f0eb07580 
     I0519 00:14:09.962595   27089 VkDecoderGlobalState.cpp:8683] Destroyed VkInstance:0xb400007e5eadc410 for application:vulkaninfo engine:.
     ```
-6. Now you have the client successfully running! Please leave your environment as is and proceed to Setting up Ubuntu Container.
+6. Now you have the client successfully running! Now leave your environment as is and proceed to Setting up Ubuntu Container.
 
 
 ## Setting up Ubuntu Container
@@ -194,11 +194,13 @@ We attempted to run benchmark executables of µVkCompute built for glibc remotel
 We installed glibc version of clvk within Ubuntu Container for forcing OpenCL commands to be executed only via GPU (not CPU). Then, we attemtped to run `clinfo` executable remotely from Ubuntu Container; Vulkan command were forwared to Kumquat server on pmOS, but the program aborted early without printing output.
 
 
-# Resources, Repositories, and External Tools Used in this Repo
+# Repositories and External Tools Used in this Repo
 
 AEMU:           https://android.googlesource.com/platform/hardware/google/aemu
 
 GFXStream:      https://android.googlesource.com/platform/hardware/google/gfxstream
+
+crosvm:         https://github.com/google/crosvm
 
 Mesa:           https://gitlab.freedesktop.org/mesa/mesa.git
 
