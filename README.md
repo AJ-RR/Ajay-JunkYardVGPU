@@ -61,7 +61,7 @@ pmOS is a distribution of Alpine Linux. It uses musl libc.
 
 ## Flashing pmOS to Google Pixel Fold
 
-1. Navigate to [google drive](https://drive.google.com/drive/u/1/folders/1fJFoLv03OnqD1DCgAlVn815QidLx3vFL) and download `updated_mali_boot.img`, `vendor_boot_cgroup_memory.img`, and `starling_rootfs_v1_18_with_firmware.img`
+1. Navigate to [Google drive](https://drive.google.com/drive/u/1/folders/1fJFoLv03OnqD1DCgAlVn815QidLx3vFL) and download `updated_mali_boot.img`, `vendor_boot_cgroup_memory.img`, and `starling_rootfs_v1_18_with_firmware.img`
 2. Reboot the phone by holding the power and volume down button; once the phone starts to reboot, keep holding the volume down button to boot into fastboot mode
 3. You will have to install adb/fastboot on your PC, follow steps on [here](https://www.xda-developers.com/install-adb-windows-macos-linux/https://www.xda-developers.com/install-adb-windows-macos-linux/)
 4. Connect your PC to Google Pixel Fold via USB-C and run the following commands in your terminal:
@@ -82,7 +82,7 @@ pmOS is a distribution of Alpine Linux. It uses musl libc.
 
 ## Setting up Environment on pmOS
 
-1. If this is the first time booting the phone you will need to flash the phone. You can find instructions for this on the Vulkan support Google drive.
+1. If this is the first time booting the phone you will need to flash the phone. You can find instructions for this on [Google drive](https://drive.google.com/drive/folders/1dRPtxfisr5T6vBEk_irbQis930U-hsCX?usp=share_link).
 2. To connect to the phone you can either communicate via serial or by plugging the phone into the router. For MacOS users the router is the only option. Windows users may change their Internet Sharing IP to 172.16.42.1 to enable internet sharing with pmOS.
 3. After ssh'ing into the phone, you will need to partition a large enough drive to hold the repo (~300 MB). To create a new partition: 
     1. `sudo mkdir /<name of dir where you want to make your mount>`
