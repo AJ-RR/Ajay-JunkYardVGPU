@@ -82,7 +82,7 @@ pmOS is a distribution of Alpine Linux. It uses musl libc.
 
 ## Setting up Environment on pmOS
 
-1. If this is the first time booting the phone you will need to flash the phone. You can find instructions for this on [Google drive](https://drive.google.com/drive/folders/1dRPtxfisr5T6vBEk_irbQis930U-hsCX?usp=share_link).
+1. If this is the first time booting the phone you will need to flash the phone. You can find instructions for this on [Google drive](https://drive.google.com/drive/u/1/folders/1fJFoLv03OnqD1DCgAlVn815QidLx3vFL).
 2. To connect to the phone you can either communicate via serial or by plugging the phone into the router. For MacOS users the router is the only option. Windows users may change their Internet Sharing IP to 172.16.42.1 to enable internet sharing with pmOS.
 3. After ssh'ing into the phone, you will need to partition a large enough drive to hold the repo (~300 MB). To create a new partition: 
     1. `sudo mkdir /<name of dir where you want to make your mount>`
