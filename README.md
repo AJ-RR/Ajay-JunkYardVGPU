@@ -13,7 +13,7 @@ The ultimate goal is to repurpose Google Pixel Folds into a compute cluster.
 
 ## Background
 
-A vGPU mechanism is necessary as GPU applications on Google Pixel Fold only run for Bionic. A vGPU mechanism allows a user to queue GPU commands from one device to another when the devices have different libc's.
+A vGPU mechanism is necessary as GPU applications on Google Pixel Fold only run for Bionic libc. A vGPU mechanism allows a user to queue GPU commands from one device to another when the devices have different libc's.
 
 Rutabaga is the full abstraction layer that handles dispatching of GPU API calls and outputing results. Below is the diagram of Rutabaga.
 
@@ -29,7 +29,7 @@ Our MVP is to display the interaction between host and guest applications.
 
 Following section goes over how to build the applications in this repo on Android; the generated executables and object files are already available in this repo. If you are just interested in using this tool on pmOS, please skip to the pmOS section below.
 
-While our Google Pixel Fold runs pmOS, which is a distribution of Alpine Linux, the executables for Rutabaga, libaemu, and GFXstream need to be built on Android to link properly against Bionic. The workaround is to compile on Android, pull the executables to pmOS, and copy the necessary shared object files into corresponding directories. 
+While our Google Pixel Fold runs pmOS, the executables for Rutabaga, libaemu, and GFXstream must be built on Android for linking properly against Bionic. The workaround is to compile on Android, pull the executables to pmOS, and copy the necessary shared object files into corresponding directories. 
 
 
 ## Setting up Termux on Android
@@ -55,6 +55,8 @@ All four executables to be built from scratch must be built on Android. The buil
 
 
 # postmarketOS (pmOS)
+
+pmOS is a distribution of Alpine Linux. It uses musl libc.
 
 
 ## Flashing pmOS to Google Pixel Fold
@@ -151,6 +153,7 @@ export CXX=/usr/bin/g++
 
 ## Setting up Ubuntu Container
 
+0. Ubuntu uses GNU libc (glibc).
 1. Navigate to your mounted directory inside your home directory (this set of instructions assumes that you have already done the previous section). Leave the server window as is; all the following can be done in the guest terminal.
 2. run `sudo nerdctl pull ajayrr/opencl-kube:arm64`, this will download and unpack an Ubuntu image.
 3. run `sudo nerdctl images` and find the opencl-kube:arm64 image, then run `sudo nerdctl run -v /tmp:/tmp -it <image id>`. This will start the container; for now type `exit`.
