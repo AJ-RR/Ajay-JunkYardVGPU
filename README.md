@@ -160,7 +160,7 @@ export CXX=/usr/bin/g++
 5. run ` sudo nerdctl exec --user root -it <container id> /bin/bash`. This will log in as root to the container; you will notice that instead of google-felix-1 you will now see root@<container_id> as your device name in the command line.
 6. run `ls` and ensure you are in `~`. Then, run `rm -rf *` to delete all files in the container home directory. Then, git clone the JunkyardVGPU repo in the container.
 7. `cd JunkyardVGPU` and `cp -r Ubuntu/* /`. This will copy all of the necessary home directory shared object files. 
-8. Now run `apt update` then `apt upgrade` and `apt autoremove mesa-vulkan-drivers` then `apt install vulkantools`.
+8. Now run `apt update` then `apt upgrade` and `apt autoremove mesa-vulkan-drivers` then `apt install vulkan-tools`.
 9. Now set the following environment variables:
     ```
     export MESA_LOADER_DRIVER_OVERRIDE=zink
